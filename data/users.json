@@ -1,0 +1,15 @@
+
+{"users":[
+	{"userID": "1", "firstName": "Mark", "lastName": "Dunleavy", "userName": "MD"},
+	{"userID": "2", "firstName": "Jen", "lastName": "Douglas", "userName": "JD"},
+	{"userID": "3", "firstName": "Joe", "lastName": "Murphy", "userName": "JM"},
+	{"userID": "4", "firstName": "Andy", "lastName": "Kelly", "userName": "AK"}
+],
+
+"social": [
+	{"name": "Twitter", "icon": "/images/social/twitter48.png", "link": "http://twitter.com"},
+	{"name": "Facebook", "icon": "/images/social/facebook48.png", "link": "http://facebook.com"},
+	{"name": "instagram", "icon": "/images/social/instagram48.png", "link": "http://instagram.com"},
+	{"name": "Whatsapp", "icon": "/images/social/whatsapp48.png", "link": "http://whatsapp.com"}
+
+]}

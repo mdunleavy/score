@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!--Link to partial template-->
+ {{>page/head}}
+
+</head>
+<body class="{{classname}}">
+	
+	<div class ="container">
+		{{setTitle}}{{>page/header}}
+		
+		{{{body}}}
+
+		{{>page/footer}}
+	</div> <!--container -->
+
+	<!--link to scripts-->
+ 	{{>page/jsdefault}}
+</body>
+</html>

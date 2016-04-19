@@ -1,0 +1,9 @@
+
+{"games":[
+	{"gameID": "1", "player1id": "1", "player2id": "2", "player1Set1": 5, "player2Set1": 7},
+	{"gameID": "2", "player1id": "4", "player2id": "1", "player1Set1": 2, "player2Set1": 6},
+	{"gameID": "3", "player1id": "2", "player2id": "3", "player1Set1": 4, "player2Set1": 6},
+	{"gameID": "4", "player1id": "1", "player2id": "3", "player1Set1": 1, "player2Set1": 6},
+	{"gameID": "5", "player1id": "4", "player2id": "2", "player1Set1": 4, "player2Set1": 6},
+	{"gameID": "6", "player1id": "3", "player2id": "2", "player1Set1": 7, "player2Set1": 5}
+]}
