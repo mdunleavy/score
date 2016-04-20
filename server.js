@@ -3,6 +3,7 @@ var app = express();
 var exphbs = require('express3-handlebars');
 var routes = require('./routes');
 var bodyParser = require('body-parser');
+var db = require('./db.js');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -23,7 +24,7 @@ app.get('*', function(req, res){
 	res.render('error');
 });
 app.post('/enterScore', function(req, res){
-	console.log('Player 1 score is :'+ req.body.opponent);
+	console.log('Player 2 name is :'+ req.body.opponent);
 	res.redirect(303, '/results');
 });
 

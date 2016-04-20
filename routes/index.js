@@ -5,7 +5,7 @@ var jsons = {"employees":[
 var userData = require('../data/users.json');
 var scoreData = require('../data/scores.json');
 
-
+var ResultSchema = require('../schemas/results');
 
 exports.index =  function(req, res){
 	res.render("index",{
@@ -46,7 +46,21 @@ exports.results = function(req,res){
 	var player1Set1 = scoreData.games[0].player1Set1;
 	var player2s1 = scoreData.games[0].player2id;
 	var player2Set1 = scoreData.games[0].player2Set1;
-	 
+	
+	var gameResult = new ResultSchema(
+			//enter data from webform here
+			
+
+			);
+		gameResult.save(function(err){
+			if(err){
+				console.log(err);
+				res.status(500).json({status: 'failure'});
+			}else{
+				res.json({status: 'success'});
+			}
+
+		});
 	
 	res.render('results', {
 		player1: scoreData.games.player1id,
@@ -55,6 +69,7 @@ exports.results = function(req,res){
 		player2Set1:scoreData.games.player2Set1,
 		games: scoreData.games,
 		gameID: scoreData.games.gameID,
+
 
 		title: "results page",
 		classname: "results"
