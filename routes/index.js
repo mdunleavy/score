@@ -1,5 +1,5 @@
 var jsons = {"employees":[
-		{"firstName": "Makr", "lastName": "Dunleavy"}
+		{"firstName": "Mark", "lastName": "Dunleavy"}
 		]};
 
 var userData = require('../data/users.json');
@@ -49,8 +49,8 @@ exports.results = function(req,res){
 	 
 	
 	res.render('results', {
-		player1s1: player1s1 ,
-		player2s1: player2s1,
+		player1: scoreData.games.player1id,
+		player2: scoreData.games.player2id,
 		player1Set1: scoreData.games.player1Set1,
 		player2Set1:scoreData.games.player2Set1,
 		games: scoreData.games,
