@@ -1,10 +1,22 @@
 the scores will be entered here
 </br>
-<form action = "/results">
+<form action = "/enterScore" method="POST">
   Player 1 Score:
   <input type="number" name="play1set1" min="1" max="6">
 </br>
+Select Player 2:
+<select name="opponent">
+    <option value="mark">mark</option>
+    <option value="tom">Tom</option>
+    <option value="jen">Jen</option>
+    <option value="joe">Joe</option>
+  </select>
+  <br><br>
+  
 Player 2 Score:
   <input type="number" name="play2set1" min="1" max="6">
   <input type="submit">
 </form>
+
+
+  
