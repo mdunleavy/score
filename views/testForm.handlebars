@@ -1,6 +1,8 @@
-the scores will be entered here
-</br>
-<form action = "/results" method="POST">
+Basic form for testing data transfer in body
+
+<br>
+
+<form action = "/testResults" method="POST">
 	Game No:
 	<select name="gameID">
     <option value="1">1</option>
@@ -8,31 +10,24 @@ the scores will be entered here
     <option value="3">3</option>
     <option value="4">4</option>
   </select>
-Select Player 1:
-<select name="homePlayer">
+<br>
+<select name="Player">
     <option value="mark">mark</option>
     <option value="tom">Tom</option>
     <option value="jen">Jen</option>
     <option value="joe">Joe</option>
   </select>
-
   Player 1 Score:
   <input type="number" name="play1set1" min="1" max="6">
-</br>
-Select Player 2:
-<select name="opponent">
+  <br><br>
+  <select name="Player2">
     <option value="mark">mark</option>
     <option value="tom">Tom</option>
     <option value="jen">Jen</option>
     <option value="joe">Joe</option>
   </select>
-  <br><br>
-  
-Player 2 Score:
+  Player 2 Score:
   <input type="number" name="play2set1" min="1" max="6">
-  <br>
+
   <input type="submit">
 </form>
-
-
-  
