@@ -4,6 +4,7 @@ var express = require('express');
 var cookieParser = require('cookie-parser'),
 	expressSession = require('express-session'),
 	MongoStore = require('connect-mongo')(expressSession);
+var passport = require ('./auth');
 var app = express();
 
 var exphbs = require('express3-handlebars');
@@ -16,11 +17,14 @@ app.use(cookieParser());
 app.use(expressSession({
 	secret: 'secret',
     store: new MongoStore({
-    	mongooseConnection: db
+    mongooseConnection: db
     }),
     resave: false,
     saveUninitialized: true
 }));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 //to parse info from the request body
 app.use(bodyParser.json());
@@ -45,6 +49,13 @@ app.get('/user/:name', routes.users);
 app.get('/testForm', routes.testForm);
 app.post('/testResults', routes.testResults);
 app.get('/testAllResult', routes.testAllResult);
+app.get('/login', routes.login);
+app.post('/login', passport.authenticate('local', {
+	failureRedirect: '/login',
+	successRedirect: '/user'
+}));
+
+app.get('/user', routes.user);
 
 //error message is requested route does not match existing route
 app.get('*', function(req, res){

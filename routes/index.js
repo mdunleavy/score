@@ -79,6 +79,23 @@ exports.testAllResult = function(req,res){
 
 };
 
+exports.login = function(req,res){
+	res.render('login',{
+		title: 'Login'
+	});
+};
+
+exports.user = function(req,res){
+	if(req.session.passport.user ===undefined){
+		res.redirect('login');
+	}else{
+		res.render('user',{
+			title: "Welcome",
+			user: req.session.passport.user
+		});
+	}
+};
+
 
 
 
