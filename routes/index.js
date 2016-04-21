@@ -35,10 +35,13 @@ exports.users = function(req, res){
 
 
 exports.testForm = function(req, res){
+
 	res.render('testForm');
 };
 
 exports.testResults = function(req, res){
+	req.session.lastOpponent = req.body.Player2;
+
 	var gameResult = new ResultSchema({
 		gameID: req.body.gameID,
 		player1id: req.body.Player,
@@ -55,9 +58,6 @@ exports.testResults = function(req, res){
 			
 		}
 	});
-	gameResult = JSON.stringify(gameResult);
-	console.log('data :'+ gameResult);
-
 };
 
 exports.testAllResult = function(req,res){
@@ -71,7 +71,8 @@ exports.testAllResult = function(req,res){
 			//res.json(results); This line of code returns JSON may be useful for angular
 			res.render('testAllResult',{
 				title: "all results",
-				results: results
+				results: results,
+				lastOpponent: req.session.lastOpponent
 			});
 		}
 	});
