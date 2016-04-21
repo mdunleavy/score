@@ -1,3 +1,4 @@
+var db = require('../db.js');
 var jsons = {"employees":[
 		{"firstName": "Mark", "lastName": "Dunleavy"}
 		]};
@@ -39,39 +40,71 @@ exports.enterScore = function(req, res){
 	});
 };
 
+exports.testForm = function(req, res){
+	res.render('testForm');
+};
+
+exports.testResults = function(req, res){
+	var gameResult = new ResultSchema({
+		gameID: req.body.gameID,
+		player1id: req.body.Player,
+		player2id: req.body.Player2,
+		player1Set1: req.body.play1set1,
+		player2Set1: req.body.play2set1
+
+	}).save(function(err, doc){
+		if(err){
+			console.log(err);
+			res.status(500);
+		}else{
+			res.redirect(303, 'testAllResult');
+			
+		}
+	});
+	gameResult = JSON.stringify(gameResult);
+	console.log('data :'+ gameResult);
+
+};
+
+exports.testAllResult = function(req,res){
+
+	ResultSchema.find()
+	.setOptions({sort:'gameID'})
+	.exec(function(err, results){
+		if (err){
+			console.log(err);
+		}else{
+			//res.json(results); This line of code returns JSON may be useful for angular
+			res.render('testAllResult',{
+				title: "all results",
+				results: results
+			});
+		}
+	});
+
+};
 
 exports.results = function(req,res){
-	var games = scoreData.games;
-	var player1s1 = scoreData.games[0].player1id;
-	var player1Set1 = scoreData.games[0].player1Set1;
-	var player2s1 = scoreData.games[0].player2id;
-	var player2Set1 = scoreData.games[0].player2Set1;
 	
-	var gameResult = new ResultSchema(
+	var gameResult = new ResultSchema({
 			//enter data from webform here
-			
+			gameID: req.body.gameID,
+	player1id: "qw",//req.body.homePlayer,
+	player2id: "as",//req.body.opponent,
+	player1Set1: 3,//req.body.play1set1,
+	player2Set1: 3//req.body.play2set1
 
-			);
-		gameResult.save(function(err){
-			if(err){
-				console.log(err);
-				res.status(500).json({status: 'failure'});
-			}else{
-				res.json({status: 'success'});
-			}
+			});
+	gameResult.save(function(err){
+		if(err){
+			console.log(err);
+			res.status(500);
+		}else{
+			//res.json({status: 'success'});
+			res.send(gameResult);
+			console.log(gameResult);
+		}
 
-		});
-	
-	res.render('results', {
-		player1: scoreData.games.player1id,
-		player2: scoreData.games.player2id,
-		player1Set1: scoreData.games.player1Set1,
-		player2Set1:scoreData.games.player2Set1,
-		games: scoreData.games,
-		gameID: scoreData.games.gameID,
-
-
-		title: "results page",
-		classname: "results"
 	});
+	
 };

@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-module.exports = mongoose.model('result',{
+module.exports = mongoose.model('Result',{
 	gameID: String,
 	player1id: String,
 	player2id: String,
